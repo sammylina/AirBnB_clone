@@ -11,12 +11,13 @@ import models
 
 def pattern(arg):
     """Changes the default input function to manage callable functions"""
-    pattern = '\.([^.]+)\(|([^(),]+)[,\s()]*[,\s()]*'
+    pattern = r"\.([^.]+)\(|([^(),]+)[,\s()]*[,\s()]*"
     arguments = re.findall(pattern, arg)
     cmd = arguments[0][0]
     arguments = arguments[1:]
     line = ' '.join(map(lambda x: x[1].strip('"'), arguments))
     return cmd, line
+
 
 def loop_dict(line, obj_update):
     """Loopinf function for advanced tasks"""
@@ -37,6 +38,7 @@ def loop_dict(line, obj_update):
                 if idx + 1 == len(line) - 1:
                     break
         idx += 1
+
 
 class HBNBCommand(cmd.Cmd):
     """
