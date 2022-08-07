@@ -1,7 +1,7 @@
  ![Image](https://camo.githubusercontent.com/a0c52a69dc410e983b8c63fa4aa57e83cb4157cd/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f696e7472616e65742d70726f6a656374732d66696c65732f686f6c626572746f6e7363686f6f6c2d6869676865722d6c6576656c5f70726f6772616d6d696e672b2f3236332f4842544e2d68626e622d46696e616c2e706e67) 
 # Airbnb Clone - The Console
 
-## Project Goals
+## Learning Objectives for this Project
 
 
 ### General Objectives
@@ -17,10 +17,12 @@
 *   What is **kwargs and how to use it
 *   How to handle named arguments in a function
 
+
+
 ### Primary Objective
 
  This project focuses on the development of the console part
- of the Air bnb clone holberton project which consists of 7 stages.
+ of the AirBnB clone project, which consists of seven stages:
 
 * The Console
 * HTML
@@ -30,14 +32,20 @@
 * REST API
 * WEB Dynamic
 
+
+
 #### Functionalities of this command interpreter:
+
 * Create a new object (ex: a new User or a new Place)
 * Retrieve an object from a file, a database etc...
 * Do operations on objects (count, compute stats, etc...)
 * Update attributes of an object
 * Destroy an object
 
+
+
 ## Table of Content
+
 * [Environment](#environment)
 * [Installation](#installation)
 * [File Descriptions](#file-descriptions)
@@ -51,7 +59,7 @@
 This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
 
 ## Installation
-* Clone this repository: `git clone "https://github.com/jemn21819/AirBnB_clone.git"`
+* Clone this repository: `git clone "https://github.com/EyobABN/AirBnB_clone"`
 * Access AirBnb directory: `cd AirBnB_clone`
 * Run hbnb(interactively): `./console` and enter command
 * Run hbnb(non-interactively): `echo "<command>" | ./console.py`
@@ -227,8 +235,8 @@ The "all" command prints all string representation of all instances and the "upd
 No known bugs at this time. 
 
 ## Authors
-* Jaime Martínez - [Github](https://github.com/jemn21819)
-* Joshua Carreras - [Github](https://github.com/Lohkrii)
+* Eyob Alamerew - [Github](https://github.com/EyobABN)
+* Samuel Hailu - [Github](https://github.com/sammylina)
 
 ## License
 Public Domain. No copy write protection. 
