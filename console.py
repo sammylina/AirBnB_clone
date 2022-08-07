@@ -9,6 +9,35 @@ import cmd
 import models
 
 
+def pattern(arg):
+    """Changes the default input function to manage callable functions"""
+    pattern = '\.([^.]+)\(|([^(),]+)[,\s()]*[,\s()]*'
+    arguments = re.findall(pattern, arg)
+    cmd = arguments[0][0]
+    arguments = arguments[1:]
+    line = ' '.join(map(lambda x: x[1].strip('"'), arguments))
+    return cmd, line
+
+def loop_dict(line, obj_update):
+    """Loopinf function for advanced tasks"""
+    idx = 4
+    while idx <= len(line):
+        try:
+            attr = line[idx]
+        except IndexError:
+            print("** attribute name missing **")
+        else:
+            try:
+                val = line[idx + 1]
+            except IndexError:
+                print("** no value found **")
+            else:
+                setattr(obj_update, attr, val)
+                obj_update.save()
+                if idx + 1 == len(line) - 1:
+                    break
+        idx += 1
+
 class HBNBCommand(cmd.Cmd):
     """
         class for command interpreter
@@ -129,6 +158,51 @@ class HBNBCommand(cmd.Cmd):
                                         loop_dict(argv, obj)
             else:
                 print("** class doesn't exist **")
+
+    def do_count(self, argv):
+        """Counts the number of instances of a class"""
+        instance_cnt = 0
+        curr_dict = models.storage.all()
+        for key, val in curr_dict.items():
+            val = val.to_dict()
+            if val['__class__'] == argv:
+                instance_cnt += 1
+        print(instance_cnt)
+
+    def do_Amenity(self, arg):
+        """ helper function for amenity class """
+        cmd, line = pattern(arg)
+        self.onecmd(' '.join([cmd, 'Amenity', line]))
+
+    def do_User(self, arg):
+        """ Helper function for User class """
+        cmd, line = pattern(arg)
+        self.onecmd(' '.join([cmd, 'User', line]))
+
+    def do_BaseModel(self, arg):
+        """ Helper function for BaseModel Class """
+        cmd, line = pattern(arg)
+        self.onecmd(' '.join([cmd, 'BaseModel', line]))
+
+    def do_City(self, arg):
+        """ Helper function for BaseModel Class """
+        cmd, line = pattern(arg)
+        self.onecmd(' '.join([cmd, 'City', line]))
+
+    def do_Review(self, arg):
+        """ Helper function for Review class """
+        cmd, line = pattern(arg)
+        self.onecmd(' '.join([cmd, 'Review', line]))
+
+    def do_State(self, arg):
+        """ Helper function for State class """
+        cmd, line = pattern(arg)
+        self.onecmd(' '.join([cmd, 'State', line]))
+
+    def do_Place(self, arg):
+        """ Helper function for Place class"""
+        cmd, line = pattern(arg)
+        self.onecmd(' '.join([cmd, 'Place', line]))
 
     def emptyline(self):
         """
