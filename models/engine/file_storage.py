@@ -13,12 +13,21 @@ from models.review import Review
 import json
 
 
-classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-        "Place": Place, "Review": Review, "State": State, "User": User}
+classes = {
+        "Amenity": Amenity,
+        "BaseModel": BaseModel,
+        "City": City,
+        "Place": Place,
+        "Review": Review,
+        "State": State,
+        "User": User
+}
+
 
 class FileStorage:
     """
-        serializes instances to a JSON file and deserializes JSON file to instances
+        serializes instances to a JSON file and deserializes \
+                JSON file to instances
     """
     __file_path = "file.json"
     __objects = {}
@@ -34,7 +43,7 @@ class FileStorage:
             sets in __objects the obj with key <obj class name>.id
         """
         self.__objects[obj.__class__.__name__ + '.' + obj.id] = obj
-        
+
     def save(self):
         """
             serializes __objects to the JSON file(path: __file_path)
@@ -54,5 +63,5 @@ class FileStorage:
                 jc = json.load(json_file)
             for key in jc:
                 self.__objects[key] = classes[jc[key]["__class__"]](**jc[key])
-        except:
+        except Exception:
             pass
