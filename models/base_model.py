@@ -27,7 +27,8 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        return '[' + self.__class__.__name__ + '] (' + self.id + ') ' + str(self.__dict__)
+        return '[' + self.__class__.__name__ + '] (' + self.id + ') '\
+            + str(self.__dict__)
 
     def save(self):
         """
@@ -38,7 +39,8 @@ class BaseModel:
 
     def to_dict(self):
         """
-            returns a dictionary containing all keys/values of the instance's __dict__
+            returns a dictionary containing all keys/values of the \
+                    instance's __dict__
         """
         new_dict = self.__dict__.copy()
         new_dict['__class__'] = self.__class__.__name__
